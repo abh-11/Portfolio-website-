@@ -1,0 +1,65 @@
+.portfolio-header {
+  --header-surface: #fafaf4;
+  --header-ink: #203f31;
+  --header-text: #435348;
+  --header-line: #d7ddd1;
+  --header-accent: #51764b;
+  --header-hover: #eaf0e3;
+  position: sticky;
+  z-index: 30;
+  top: 0;
+  background: var(--header-surface);
+  color: var(--header-ink);
+  border-bottom: 1px solid var(--header-line);
+  font-family: var(--sans, system-ui), sans-serif;
+}
+[data-theme="dark"] .portfolio-header {
+  --header-surface: #17251e;
+  --header-ink: #eef2df;
+  --header-text: #d0d9c9;
+  --header-line: #405245;
+  --header-accent: #c5de9b;
+  --header-hover: #2c4030;
+}
+.head-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 70px; }
+.head-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--header-ink); white-space: nowrap; text-decoration: none; font-family: var(--serif, Georgia), serif; font-size: 25px; letter-spacing: -.045em; line-height: 1; }
+.head-brand-mark { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: #e4eed0; background: #254e37; }
+[data-theme="dark"] .head-brand-mark { background: #c6dea9; color: #1c3a29; }
+.head-nav { display: flex; align-items: center; gap: clamp(18px, 2.3vw, 37px); align-self: stretch; }
+.head-nav a { font-size: 13px; font-weight: 500; color: var(--header-text); display: inline-flex; align-items: center; position: relative; text-decoration: none; }
+.head-nav a::after { content: ""; position: absolute; height: 2px; border-radius: 1px; background: var(--header-accent); right: 0; left: 0; bottom: -7px; transform: scaleX(0); transform-origin: left; transition: transform .18s; }
+.head-nav a:is(:hover,[aria-current]) { color: var(--header-ink); }
+.head-nav a:is(:hover,[aria-current])::after { transform: scaleX(1); }
+.head-actions { display: flex; gap: 9px; align-items: center; }
+.head-actions button { cursor: pointer; font-family: inherit; font-weight: 500; background: transparent; color: var(--header-text); border: 1px solid var(--header-line); display: inline-flex; align-items: center; justify-content: center; transition: background .16s, border-color .16s; }
+.head-actions button:hover { background: var(--header-hover); border-color: var(--header-accent); }
+.head-circle { width: 35px; height: 35px; padding: 0; border-radius: 50%; }
+.head-music { gap: 7px; padding: 0 12px; min-height: 35px; border-radius: 50px; font-size: 11px; white-space: nowrap; }
+.head-music[aria-pressed="true"] { background: var(--header-hover); border-color: var(--header-accent); }
+.head-audio { position: relative; display: inline-flex; }
+.head-actions .head-menu, .head-moon, [data-theme="dark"] .head-sun { display: none; }
+[data-theme="dark"] .head-moon { display: block; }
+.head-feedback { position: absolute; top: calc(100% + 8px); right: 0; width: 200px; border: 1px solid var(--header-line); padding: 10px; background: var(--header-surface); border-radius: 6px; font-size: 12px; line-height: 1.5; }
+.head-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 890px) {
+  .head-inner { min-height: 62px; }
+  .head-actions .head-menu { display: inline-flex; }
+  .head-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--header-surface); border-top: 1px solid var(--header-line); border-bottom: 1px solid var(--header-line); padding: 9px max(5vw, calc((100vw - 1360px)/2)) 15px; box-shadow: 0 8px 14px rgb(20 44 31 / 7%); }
+  .head-nav-open { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .head-nav a { min-height: 42px; padding: 0 12px; border-radius: 7px; }
+  .head-nav a::after { display: none; }
+  .head-nav a[aria-current] { background: var(--header-hover); }
+}
+@media (max-width: 520px) {
+  .head-inner { min-height: 59px; gap: 8px; }
+  .head-brand { gap: 7px; font-size: 21px; }
+  .head-brand-mark { height: 29px; width: 29px; }
+  .head-brand-mark svg { width: 20px; }
+  .head-actions { gap: 5px; }
+  .head-music { padding: 0 8px; gap: 4px; font-size: 10px; min-height: 32px; }
+  .head-circle { width: 32px; height: 32px; }
+}
+@media (max-width: 355px) { .head-music svg { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .head-nav a::after, .head-actions button { transition: none; }
+}

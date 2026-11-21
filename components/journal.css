@@ -1,0 +1,59 @@
+.journal-section {
+  background: var(--paper);
+  color: var(--ink);
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+.journal-index { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 8vw, 9rem); }
+.journal-intro > svg { color: var(--muted); margin-bottom: 1.4rem; }
+.journal-section h2 { font: 400 clamp(2.8rem, 5vw, 4.7rem)/1.02 var(--serif); letter-spacing: -.035em; margin: 0; }
+.journal-intro p, .journal-gallery-heading p { color: var(--muted); font: 400 1rem/1.65 var(--sans); }
+.journal-intro p { max-width: 30ch; margin-top: 1.15rem; }
+.journal-records { border-top: 1px solid var(--line); align-self: start; }
+.journal-records details { border-bottom: 1px solid var(--line); scroll-margin-top: 6rem; }
+.journal-records summary { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem .25rem; cursor: pointer; list-style: none; gap: 1rem; }
+.journal-records summary::-webkit-details-marker { display: none; }
+.journal-records summary h3 { width: 100%; display: flex; align-items: center; gap: 1rem; margin: 0; font: 500 1.03rem/1.4 var(--sans); }
+.journal-records summary svg { flex-shrink: 0; }
+.journal-chevron { margin-left: auto; transition: transform 180ms; }
+.journal-records details[open] .journal-chevron { transform: rotate(180deg); }
+.journal-entries, .journal-empty { list-style: none; padding: 0 1.1rem 1.25rem 2.58rem; margin: 0; }
+.journal-entries li, .journal-empty { color: var(--muted); line-height: 1.6; font-size: .92rem; }
+.journal-entries li + li { margin-top: .8rem; }
+.journal-entries li > span { display: block; font-size: .86rem; }
+.journal-entries a { color: var(--ink); text-underline-offset: 3px; text-decoration: underline; }
+.journal-entries a svg { display: inline; }
+.journal-gallery { margin-top: clamp(4rem, 7vw, 7rem); }
+.journal-gallery-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+.journal-gallery-heading h2 { font-size: clamp(2.6rem,4.2vw,4rem); }
+.journal-gallery-heading p { margin: 0; font-size: .9rem; }
+.journal-photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.9rem, 2vw, 1.8rem); }
+.journal-photo { display: block; color: inherit; text-decoration: none; }
+.journal-photo-frame { position: relative; display: block; width: 100%; aspect-ratio: 1.5; overflow: hidden; border-radius: .75rem; background: var(--surface); }
+.journal-photo-frame img { object-fit: cover; transition: transform .45s ease; }
+.journal-photo:hover img, .journal-photo:focus-visible img { transform: scale(1.035); }
+.journal-photo-caption { display: flex; justify-content: space-between; align-items: center; gap: .4rem; padding: .85rem .15rem; font-size: 1.03rem; }
+.journal-lightbox { position: fixed; inset: 0; width: min(92vw, 880px); max-width: 96vw; max-height: 94dvh; overflow: auto; margin: auto; padding: 0; border: none; border-radius: 1rem; background: var(--paper); color: var(--ink); }
+.journal-lightbox::backdrop { background: rgb(9 19 13 / .8); }
+.journal-viewer { position: relative; }
+.journal-large-photo { position: relative; height: min(62dvh, 570px); background: #202821; }
+.journal-large-photo img { object-fit: contain; }
+.journal-viewer button { width: 44px; height: 44px; border: 1px solid var(--line); display: grid; place-items: center; border-radius: 50%; cursor: pointer; color: var(--ink); background: var(--paper); }
+.journal-close { position: absolute; z-index: 1; top: .7rem; right: .7rem; }
+.journal-viewer-controls, .journal-arrows { display: flex; gap: .5rem; align-items: center; }
+.journal-viewer-controls { padding: .85rem 1rem; justify-content: space-between; }
+.journal-viewer-controls p { margin: 0; font: 400 1.5rem/1.2 var(--serif); }
+.journal-position { display: block; color: var(--muted); font: 400 .8rem/1.6 var(--sans); }
+.journal-back { transform: rotate(180deg); }
+@media (max-width: 740px) {
+  .journal-index { grid-template-columns: 1fr; gap: 1.75rem; }
+  .journal-intro p { max-width: 42ch; }
+  .journal-gallery-heading { flex-direction: column; gap: .65rem; }
+}
+@media (max-width: 580px) {
+  .journal-photos { grid-template-columns: 1fr; }
+  .journal-photo-frame { aspect-ratio: 1.8; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .journal-chevron, .journal-photo-frame img { transition: none; }
+  .journal-photo:hover img, .journal-photo:focus-visible img { transform: none; }
+}
